@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EBD" Class="db_entityDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ELITON-PC;Initial Catalog=EBD;Integrated Security=True" SettingsObjectName="EBDSystem.Properties.Settings" SettingsPropertyName="EBDConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.aluno_classe" Member="aluno_classes">
+    <Type Name="aluno_classe">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_classe" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_aluno" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="classe_aluno_classe" Member="classe" ThisKey="id_classe" OtherKey="id" Type="classe" IsForeignKey="true" />
+      <Association Name="pessoa_aluno_classe" Member="pessoa" ThisKey="id_classe" OtherKey="id" Type="pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bairro" Member="bairros">
+    <Type Name="bairro">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_cidade" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="bairro_pessoa" Member="pessoas" ThisKey="id" OtherKey="id_bairro" Type="pessoa" />
+      <Association Name="cidade_bairro" Member="cidade" ThisKey="id_cidade" OtherKey="id" Type="cidade" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cidade" Member="cidades">
+    <Type Name="cidade">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="cidade_bairro" Member="bairros" ThisKey="id" OtherKey="id_cidade" Type="bairro" />
+      <Association Name="estado_cidade" Member="estado" ThisKey="id_estado" OtherKey="id" Type="estado" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.classe" Member="classes">
+    <Type Name="classe">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="classe_aluno_classe" Member="aluno_classes" ThisKey="id" OtherKey="id_classe" Type="aluno_classe" />
+      <Association Name="classe_pessoa" Member="pessoas" ThisKey="id" OtherKey="id_classe" Type="pessoa" />
+      <Association Name="classe_professor_classe" Member="professor_classes" ThisKey="id" OtherKey="id_classe" Type="professor_classe" />
+    </Type>
+  </Table>
+  <Table Name="dbo.estado" Member="estados">
+    <Type Name="estado">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_pais" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="uf" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Association Name="estado_cidade" Member="cidades" ThisKey="id" OtherKey="id_estado" Type="cidade" />
+      <Association Name="pai_estado" Member="pai" ThisKey="id_pais" OtherKey="id" Type="pai" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pessoa" Member="pessoas">
+    <Type Name="pessoa">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="tipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_bairro" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="endereco" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="numero" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="cep" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="id_pai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_mae" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_classe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="data_nascimento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="estado_civil" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="telefone_principal" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="telefone_secundario" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="comentario" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="id_conjuge" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="pessoa_aluno_classe" Member="aluno_classes" ThisKey="id" OtherKey="id_classe" Type="aluno_classe" />
+      <Association Name="pessoa_pessoa" Member="pessoas" ThisKey="id" OtherKey="id_conjuge" Type="pessoa" />
+      <Association Name="pessoa_pessoa1" Member="pessoas1" ThisKey="id" OtherKey="id_mae" Type="pessoa" />
+      <Association Name="pessoa_pessoa2" Member="pessoas2" ThisKey="id" OtherKey="id_pai" Type="pessoa" />
+      <Association Name="pessoa_professor_classe" Member="professor_classes" ThisKey="id" OtherKey="id_pessoa" Type="professor_classe" />
+      <Association Name="bairro_pessoa" Member="bairro" ThisKey="id_bairro" OtherKey="id" Type="bairro" IsForeignKey="true" />
+      <Association Name="classe_pessoa" Member="classe" ThisKey="id_classe" OtherKey="id" Type="classe" IsForeignKey="true" />
+      <Association Name="pessoa_pessoa" Member="conjuge" Storage="_conjugue" ThisKey="id_conjuge" OtherKey="id" Type="pessoa" IsForeignKey="true" />
+      <Association Name="pessoa_pessoa1" Member="mae" ThisKey="id_mae" OtherKey="id" Type="pessoa" IsForeignKey="true" />
+      <Association Name="pessoa_pessoa2" Member="pai" ThisKey="id_pai" OtherKey="id" Type="pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.professor_classe" Member="professor_classes">
+    <Type Name="professor_classe">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_classe" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_pessoa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="classe_professor_classe" Member="classe" ThisKey="id_classe" OtherKey="id" Type="classe" IsForeignKey="true" />
+      <Association Name="pessoa_professor_classe" Member="professor" ThisKey="id_pessoa" OtherKey="id" Type="pessoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pais" Member="pais">
+    <Type Name="pai">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="sigla" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="pai_estado" Member="estados" ThisKey="id" OtherKey="id_pais" Type="estado" />
+    </Type>
+  </Table>
+</Database>

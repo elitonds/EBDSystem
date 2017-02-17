@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1120DE0C-889C-420B-9CCD-A2FCFCAA9B7A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EBDSystem</RootNamespace>
+    <AssemblyName>EBDSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BD\BairroDAO.cs" />
+    <Compile Include="BD\CidadeDAO.cs" />
+    <Compile Include="BD\ConjugeDAO.cs" />
+    <Compile Include="BD\db_entity.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_entity.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="BD\DAO.cs" />
+    <Compile Include="BD\ClasseDAO.cs" />
+    <Compile Include="BD\MaeDAO.cs" />
+    <Compile Include="BD\PaiDAO.cs" />
+    <Compile Include="BD\PessoaDAO.cs" />
+    <Compile Include="BD\ProfessorDAO.cs" />
+    <Compile Include="Components\ControlActions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ControlActions.Designer.cs">
+      <DependentUpon>ControlActions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ControlConfirmCancel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ControlConfirmCancel.Designer.cs">
+      <DependentUpon>ControlConfirmCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\FormSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\FormSearch.Designer.cs">
+      <DependentUpon>FormSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\MyGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Search.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Search.Designer.cs">
+      <DependentUpon>Search.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BairroEntity.cs" />
+    <Compile Include="Model\CidadeEntity.cs" />
+    <Compile Include="Model\ClasseEntity.cs" />
+    <Compile Include="Model\Entity.cs" />
+    <Compile Include="Model\PessoaEntity.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Validator.cs" />
+    <Compile Include="Views\FormCadastroBairro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormCadastroBairro.Designer.cs">
+      <DependentUpon>FormCadastroBairro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormCadastroCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormCadastroCidade.Designer.cs">
+      <DependentUpon>FormCadastroCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormCadastroClasse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormCadastroClasse.Designer.cs">
+      <DependentUpon>FormCadastroClasse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormCadastroPessoaMembro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormCadastroPessoaMembro.Designer.cs">
+      <DependentUpon>FormCadastroPessoaMembro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Components\ControlActions.resx">
+      <DependentUpon>ControlActions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ControlConfirmCancel.resx">
+      <DependentUpon>ControlConfirmCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\FormSearch.resx">
+      <DependentUpon>FormSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Search.resx">
+      <DependentUpon>Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormCadastroBairro.resx">
+      <DependentUpon>FormCadastroBairro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormCadastroCidade.resx">
+      <DependentUpon>FormCadastroCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="BD\db_entity.dbml.layout">
+      <DependentUpon>db_entity.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Views\FormCadastroClasse.resx">
+      <DependentUpon>FormCadastroClasse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormCadastroPessoaMembro.resx">
+      <DependentUpon>FormCadastroPessoaMembro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="BD\db_entity.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>db_entity.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Incluir_40x40.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Editar_40x38.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excluir_40x38.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\research 12x12.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\people_search2 40x38.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mais 20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mais 17x17.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close 17x17.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add 14x14.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove 14x14.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add 12x12.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config 16x16.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
